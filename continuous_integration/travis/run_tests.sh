@@ -18,8 +18,10 @@ echo "-- Hard limits"
 echo "--"
 ulimit -a -H
 
-if [[ $COVERAGE == true ]]; then
-    coverage run $(which py.test) distributed -m "not avoid_travis" $PYTEST_OPTIONS;
-else
-    py.test -m "not avoid_travis" distributed $PYTEST_OPTIONS;
-fi;
+# if [[ $COVERAGE == true ]]; then
+#     coverage run $(which py.test) distributed -m "not avoid_travis" $PYTEST_OPTIONS;
+# else
+#     py.test -m "not avoid_travis" distributed $PYTEST_OPTIONS;
+# fi;
+
+pytest distributed/tests/test_client.py::test_close
